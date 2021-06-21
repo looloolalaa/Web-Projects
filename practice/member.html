@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <title> member </title>
+   <script>
+      function show(){
+         var form=document.myform;
+
+
+         var id=form["id"].value;
+         if(id.length==0)
+         {
+            alert("아이디는 필수입력값입니다.");
+            return false;
+         }
+         else if(id.length<6)
+         {
+            alert("아이디는 6자리 이상입니다.");
+            return false;
+         }
+
+
+         var name=form["name"].value;
+         if(name.length==0)
+         {
+            alert("이름은 필수입력값입니다.");
+            return false;
+         }
+
+
+         var pass=form["password"].value;
+         var exp1=/[0-9]+/;
+         var exp2=/[a-zA-Z]+/;
+         var exp3=/[@#$]+/;
+         var exp4=/[~!%^&*|\\\'\";:\/?"]+/;
+         if(pass.length==0)
+         {
+            alert("비밀번호는 필수입력값입니다.");
+            return false;
+         }
+         else if(pass.length<6)
+         {
+            alert("비밀번호는 6자리 이상입니다.");
+            return false;
+         }
+         else if(!exp1.test(pass)||!exp2.test(pass)||!exp3.test(pass)||exp4.test(pass))
+         {
+            if(!exp1.test(pass))
+               alert("비밀번호는 숫자를 포함해야 합니다.");
+            else if(!exp2.test(pass))
+               alert("비밀번호는 영문을 포함해야 합니다.");
+            else if(!exp3.test(pass))
+               alert("비밀번호는 @#$를 포함해야 합니다.");
+            else if(exp1.test(pass))
+               alert("비밀번호 특수문자는 @#$만 사용해야 합니다.");
+            return false;
+         }
+
+
+         var gender=form["gender"].value;
+         var cell=form["phone1"].value+form["phone2"].value+form["phone3"].value;
+         var address=form["address"].value;
+         var hobby="";
+         for(var i=1;i<=4;i++)
+         {   
+            if(form["hobby"+i].checked)
+               hobby+=form["hobby"+i].value+" ";
+         }
+         var str=id+"\n"+name+"\n"+gender+"\n";
+         str+=cell+"\n"+address+"\n"+hobby;
+         alert(str);
+      }
+   </script>
+</head>
+
+   <body>
+
+      <form method="post" name="myform">
+      <table border="1" cellspacing="0" width="600" height="350">
+         <tr>
+            <td width="100" align="right">* 아이디 : </td>
+            <td> <input type="text" name="id" size="15"maxlength="12"/>
+            </td>
+         </tr>
+         <tr>
+            <td align="right">* 이 름 : </td>
+            <td><input type="text" name="name" size="15"maxlength="12"></td>
+         </tr>
+         <tr>
+            <td align="right">* 비밀번호 : </td>
+            <td><input type="password" name="password" size="15" maxlength="10"></td>
+         </tr>
+         <tr>
+            <td align="right"> 성별 : </td>
+            <td> <input type="radio" name="gender" value="male" checked>남성
+               <input type="radio" name="gender" value="female">여성</td>
+         </tr>
+         <tr>
+            <td align="right"> 휴대전화 : </td>
+            <td><select name="phone1">
+               <option value="010" selected>010</option>
+               <option value="016">011</option>
+               <option value="016">016</option>
+               <option value="016">017</option>
+               <option value="016">070</option>
+            </select>
+               -<input type="text" name="phone2" size="4"maxlength="4">-<input type="text" name="phone3" size="4" maxlength="4"></td>
+         </tr>
+         <tr>
+            <td align="right"> 주 소 : </td>
+            <td><input type="text" name="address" size="44" maxlength="44"></td>
+         </tr>
+         <tr>
+            <td align="right"> 취 미 : </td>
+            <td><input type="checkbox" name="hobby1" value="exercise">운동
+               <input type="checkbox" name="hobby2" value="game">게임
+               <input type="checkbox" name="hobby3" value="music">음악
+               <input type="checkbox" name="hobby4" value="meditation">명상
+            </td>
+         </tr>
+         <tr>
+            <td align="right"> 자기소개 :</td>
+            <td><textarea name="intro" rows="5" cols="60"></textarea></td>
+         </tr>
+
+      </table>
+      <br>
+
+      <input type="button" value="회원가입" onclick="show();">
+      <input type="reset" value="다시작성">
+   </form>
+   </body>
+   </html>

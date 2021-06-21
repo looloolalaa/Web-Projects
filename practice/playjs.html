@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>playjs</title>
+<link rel="stylesheet" type="text/css" href="playjs.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<script src="playjs.js"></script>
+
+</head>
+
+<body>
+	<header>
+		<div id="title">
+			Play with JS!
+		</div>
+		<div id="ctime">
+
+		</div>
+		<nav>
+			<ul>
+				<li><a class ="main-menu" href="#">Basic JS</a></li>
+				<li><a class ="main-menu" href="#">Hangman</a></li>
+				<li><a class ="main-menu" href="#">jQuery</a></li>
+				<li><a class ="main-menu" href="#">Advanced JS</a></li>
+			</ul>
+		</nav>
+	</header>
+	<div id="content">
+		<div class="lab">
+			<h3>덧셈 계산기</h3>
+			<form name="myform">
+				첫번째 정수:
+				<input id="x"><br>
+				두번째 정수:
+				<input id="y"><br>
+				합계:
+				<input id="sum"><br>
+				<input type="button" value="계산" id="calc1">
+			</form>
+		</div>
+
+		<div id="lab">
+			<h3>숫자 맞추기 게임</h3>
+			<p>이 게임은 컴퓨터가 생성한 숫자를 맞추는 게임입니다.<br>
+			숫자는 1부터 100사이에 있습니다.</p><br>
+			<form>
+				숫자:
+				<input type="text" id="user" size="5">
+				<input type="button" value="확인"  id="guess1">
+				<br><br>
+				추측횟수:
+				<input type="text" id="guesses" size="5">
+				힌트:
+				<input type="text" id="result" size="16">
+				<input type="button" value="다시하기" id="replay1">
+			</form>
+
+
+
+			<table border="3" cellspacing="0">
+			<script>
+				document.write("<tr>")
+				for(i=0;i<8;i++)
+				{
+					document.write("<td>"+(i+2)+"단"+"</td>")
+				}
+				document.write("</tr>")
+
+				for(i=0;i<9;i++)
+				{
+					document.write("<tr>")
+					for(j=0;j<8;j++)
+					{
+						document.write("<td>"+(j+2)+"x"+(i+1)+"="+(j+2)*(i+1)+"</td>")
+					}
+					document.write("</tr>")
+				}
+			</script>
+			</table>
+		</div>
+
+		<div class="lab">
+			<img src="puppy.jpg" width="400" height="400" id="image">
+			<input type="button" value="눌러보세용" id="ao">
+		</div>
+
+		<div class="lab">
+			<h3>색상 테이블 출력하기</h3>
+			<input type="button" id="ctCreate" value="출력하기">
+			<input type="button" id="ctRemove" value="없애기">
+			<div id="colorTable"></div>
+		</div>
+
+		<div class="lab">
+			<div id="target">
+				<p>This is a Text.</p>
+			</div>
+			<button id="stopTextColor1">중지</button>
+		</div>
+
+		<div class="lab">
+			<h3>상자 이동하기</h3>
+			<p>
+				<button id="myMove1">Click Me</button>
+			</p>
+			<div id="container">
+				<div id="animate"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="hangman">
+		<div>
+			<img src="hangman6.gif" id="hangmanpic" alt="hangman">
+		</div>
+		<div id="clue">Press New Game to play!</div>
+		<div>
+			<input type="text" id="hguess" size="1" maxlength="1" value="">
+			<button id="guessbutton" disabled="disabled">Guess</button>
+		</div>
+		<div id="newgamearea">
+			<button id="newGame1">New Game</button>
+		</div>
+		<div id="guessstr"></div>
+	</div>
+	
+
+	<footer>
+		<p>Web Programming, Spring 2019</p>
+		<p>Created by 2ki__4</p>
+	</footer>
+</body>
+
+</html>

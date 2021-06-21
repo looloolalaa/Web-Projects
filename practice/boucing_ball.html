@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bouncing Ball Example</title>
+	<style>
+		canvas{
+			background: white;
+			border: 1px dotted black;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="700" height="500"></canvas>
+	<script>
+		var canvas=document.getElementById("myCanvas");
+		var context=canvas.getContext("2d");
+
+		var x=300; //시작점 
+		var y=400;
+		var dx=1;  //공 속도
+		var dy=1;
+		var egg=new Image();
+		egg.src="egg.png";
+		var bricks=[];
+		var brick_rows=3;
+		var brick_cols=4;
+		for(var i=0;i<brick_rows;i++)
+		{
+			bricks[i]=[];
+			for(var j=0;j<brick_cols;j++)
+				bricks[i][j]={x:0,y:0};
+		}
+
+		
+		var brick_width=100;
+		var brick_height=50;
+		var brick_padding=10;
+
+
+		function drawBricks(){
+			for(var i=0;i<brick_rows;i++)
+			{
+				for(var j=0;j<brick_cols;j++)
+				{
+					bricks[i][j].x=100+j*(brick_width+brick_padding);
+					bricks[i][j].y=100+i*(brick_height+brick_padding);
+
+					context.beginPath();
+					context.rect(bricks[i][j].x,bricks[i][j].y,brick_width,brick_height);
+					context.fillStyle="blue";
+					context.fill();
+					context.closePath();
+				}
+			}
+		}
+
+		function drawEgg(){
+			context.clearRect(0,0,700,500); //캔버스 크기, 자취 삭제
+			context.beginPath();
+			context.arc(x,y,15,0,2.0*Math.PI,true);
+			context.fillStyle="red";
+			context.fill();
+
+			context.drawImage(egg,x-15,y-15,30,35);
+			x+=dx;
+			y+=dy;
+			if(y+20>500)
+				dy=-dy;
+			if(x+15>700)
+				dx=-dx;
+			if(y-15<0)
+				dy=-dy;
+			if(x-15<0)
+				dx=-dx;
+
+		}
+		drawBricks();
+		setInterval(drawEgg,10);
+		
+	</script>
+</body>
+</html>

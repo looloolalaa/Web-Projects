@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>playjs</title>
+<link rel="stylesheet" type="text/css" href="jquery.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="jquery.js"></script>
+
+</head>
+
+<body>
+	<header>
+		<div id="title">
+			Play with JS!
+		</div>
+		<div id="ctime">
+
+		</div>
+		<nav>
+			<ul>
+				<li><a class ="main-menu" href="#">Basic JS</a></li>
+				<li><a class ="main-menu" href="#">Hangman</a></li>
+				<li><a class ="main-menu" href="#">jQuery</a></li>
+				<li><a class ="main-menu" href="#">Advanced JS</a></li>
+			</ul>
+		</nav>
+	</header>
+	<div id="content">
+
+		<div class="lab">
+			<div id="news"></div>
+		</div>
+
+		<div class="lab">
+			<div class="out">
+				<p>마우스를 여기로 움직이세요.</p>
+				<p>0</p>
+			</div>
+			<button id="b1">button</button>
+			<button id="max_screen">전체 화면 보기</button>
+		</div>
+
+		<div class="lab">
+			<button id="theone">Does nothing....</button>
+			<button id="bind">Add Click</button>
+			<button id="unbind">Remove Click</button>
+			<div id="off_test" style="display: none;">Click!</div>
+		</div>
+
+		<div class="lab">
+			<div id="trigger_test">
+				<button>Button #1</button>
+				<button>Button #2</button>
+				<div><span>0</span>button #1 clicks.</div>
+				<div><span>0</span>button #2 clicks.</div>
+			</div>
+		</div>
+
+		<div class="lab">
+			<h3>이미지 변경하기</h3>
+			<div id="imageArea">
+				<img src="hedgehog.jpg" id="image" width="240">
+			</div>
+		</div>
+
+		<div class="lab">
+			<h3>사진 앨범</h3>
+			<div>
+				<img id="imgAlbum" width="250" height="250">
+			</div>
+		</div>
+
+		<div class="lab">
+			<h1>slideshow</h1>
+			<div class="slideshow">
+				<img src="imgs/photo1-1.jpg" alt="">
+				<img src="imgs/photo1-2.jpg" alt="" class="alt">
+				<img src="imgs/photo1-3.jpg" alt="" class="alt">
+				<img src="imgs/photo1-4.jpg" alt="" class="alt">
+				<img src="imgs/photo1-5.jpg" alt="" class="alt">
+			</div>
+			<div class="slideshow">
+				<img src="imgs/photo2-1.jpg" alt="">
+				<img src="imgs/photo2-2.jpg" alt="" class="alt">
+				<img src="imgs/photo2-3.jpg" alt="" class="alt">
+				<img src="imgs/photo2-4.jpg" alt="" class="alt">
+				<img src="imgs/photo2-5.jpg" alt="" class="alt">
+			</div>
+			<div class="slideshow">
+				<img src="imgs/photo4-1.jpg" alt="">
+				<img src="imgs/photo4-2.jpg" alt="" class="alt">
+				<img src="imgs/photo4-3.jpg" alt="" class="alt">
+				<img src="imgs/photo4-4.jpg" alt="" class="alt">
+				<img src="imgs/photo4-5.jpg" alt="" class="alt">
+			</div>
+		</div>
+
+		<div class="lab" id="schedule">
+			<div id="schedule_header">
+				<h2>스케줄 노트</h2>
+				<div id="add_img"><img src="plus_img.jpg" width="30"></div>
+			</div>
+			<div id="note_form">
+				<table>
+					<tr>
+						<td>제목:</td>
+						<td><input type="text" id="note_title"></td>
+					</tr>
+					<tr>
+						<td>날짜:</td>
+						<td><input type="date" id="note_date"></td>
+					</tr>
+					<tr>
+						<td>내용:</td>
+						<td><textarea id="note_content" rows="20" cols="50"></textarea></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center"><button id="add_note">확인</button></td>
+					</tr>
+				</table>
+			</div>
+			<div id="note"></div>
+		</div>
+
+		<div class="lab">
+			<div id="animation_test">
+				<button id="moving_button">click</button>
+				<div id="moving_box"></div>
+			</div>
+		</div>
+
+		<div class="lab">
+			<dl class="accordion">
+				<dt>Item 1</dt>
+				<dd>some explanation here 1</dd>
+				<dt>Item 2</dt>
+				<dd>some explanation here 2</dd>
+				<dt>Item 3</dt>
+				<dd>some explanation here 3</dd>
+				<dt>Item 4</dt>
+				<dd>some explanation here 4</dd>
+			</dl>
+
+			<dl class="accordion">
+				<dt>Item 1</dt>
+				<dd>some explanation here 1</dd>
+				<dt>Item 2</dt>
+				<dd>some explanation here 2</dd>
+				<dt>Item 3</dt>
+				<dd>some explanation here 3</dd>
+				<dt>Item 4</dt>
+				<dd>some explanation here 4</dd>
+			</dl>
+		</div>
+
+
+		<div class="lab">
+			<h3>덧셈 계산기</h3>
+			<form name="myform">
+				첫번째 정수:
+				<input id="x"><br>
+				두번째 정수:
+				<input id="y"><br>
+				합계:
+				<input id="sum"><br>
+				<input type="button" value="계산" id="calc1">
+			</form>
+		</div>
+
+		<div id="lab">
+			<h3>숫자 맞추기 게임</h3>
+			<p>이 게임은 컴퓨터가 생성한 숫자를 맞추는 게임입니다.<br>
+			숫자는 1부터 100사이에 있습니다.</p><br>
+			<form>
+				숫자:
+				<input type="text" id="user" size="5">
+				<input type="button" value="확인"  id="guess1">
+				<br><br>
+				추측횟수:
+				<input type="text" id="guesses" size="5">
+				힌트:
+				<input type="text" id="result" size="16">
+				<input type="button" value="다시하기" id="replay1">
+			</form>
+
+
+
+			<table border="3" cellspacing="0">
+			<script>
+				document.write("<tr>")
+				for(i=0;i<8;i++)
+				{
+					document.write("<td>"+(i+2)+"단"+"</td>")
+				}
+				document.write("</tr>")
+
+				for(i=0;i<9;i++)
+				{
+					document.write("<tr>")
+					for(j=0;j<8;j++)
+					{
+						document.write("<td>"+(j+2)+"x"+(i+1)+"="+(j+2)*(i+1)+"</td>")
+					}
+					document.write("</tr>")
+				}
+			</script>
+			</table>
+		</div>
+
+		<div class="lab">
+			<img src="puppy.jpg" width="400" height="400" id="image">
+			<input type="button" value="눌러보세용" id="ao">
+		</div>
+
+		<div class="lab">
+			<h3>색상 테이블 출력하기</h3>
+			<input type="button" id="ctCreate" value="출력하기">
+			<input type="button" id="ctRemove" value="없애기">
+			<div id="colorTable"></div>
+		</div>
+
+		<div class="lab">
+			<div id="target">
+				<p>This is a Text.</p>
+			</div>
+			<button id="stopTextColor1">중지</button>
+		</div>
+
+		<div class="lab">
+			<h3>상자 이동하기</h3>
+			<p>
+				<button id="myMove1">Click Me</button>
+			</p>
+			<div id="container">
+				<div id="animate"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="hangman">
+		<div>
+			<img src="hangman6.gif" id="hangmanpic" alt="hangman">
+		</div>
+		<div id="clue">Press New Game to play!</div>
+		<div>
+			<input type="text" id="hguess" size="1" maxlength="1" value="">
+			<button id="guessbutton" disabled="disabled">Guess</button>
+		</div>
+		<div id="newgamearea">
+			<button id="newGame1">New Game</button>
+		</div>
+		<div id="guessstr"></div>
+	</div>
+
+	<h2>Data 가져오기</h2>
+	<div id="textbox"></div>
+	<button id="getText">data 가져오기</button>
+	
+
+	<footer>
+		<p>Web Programming, Spring 2019</p>
+		<p>Created by 2ki__4</p>
+	</footer>
+</body>
+
+</html>

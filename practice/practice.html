@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>practice</title>
+</head>
+<body>
+	<canvas id="myCanvas" width="200" height="100"  style="border: 1px dotted red"></canvas>
+	<script>
+		var canvas = document.getElementById('myCanvas');
+var context = canvas.getContext('2d');
+context.beginPath();
+context.lineTo(0, 0);
+context.lineTo(100, 100);
+context.lineTo(150, 50);
+context.lineTo(200, 100);
+context.closePath();
+
+
+context.fillStyle="red";
+context.strokeStyle="purple";
+context.strokeStyle="black";
+context.stroke();
+
+
+
+
+context.rect(110,50,50,50);
+context.strokeStyle = "red";
+context.stroke();
+	</script>
+
+</body>
+</html>

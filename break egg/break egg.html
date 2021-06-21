@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>계란 후라이</title>
+     <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Cute+Font|Lobster|Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <style>
+        *{ padding: 0; margin: 0; background-color: Lavender; }
+        canvas{ background: white;
+               display: block;
+                margin: 10px 0; 
+                border: 5px groove lightgreen;}
+        footer{
+           font-family: 'Baloo Bhai', cursive;
+           color:hotpink;
+           text-align:center;
+           position: absolute;
+         bottom:-5px;
+         width: 100%;
+         height: 30px;
+         margin: 5px;
+         padding: 5px;
+        }
+        #content{
+           font-family: 'Baloo Bhai', cursive;
+           width:1400px;
+           height:auto;
+        }
+        #canvas{
+           float:left;
+           
+        }
+        #myCanvas{
+           background-image:url('fire1.JPG');
+
+        }
+        #show{float: left;
+            margin: 10px 0;
+            
+             }
+
+        #show_box{
+           border: 3px ridge lightgreen;
+           width: 300px;
+           height:250px;
+        }
+        #music_box{
+           border: 3px ridge lightgreen;
+           width: 300px;
+           height:105px;
+           text-align: center;
+        }
+        #story_box{
+           border: 3px ridge lightgreen;
+           width: 300px;
+           height:135px;
+        }
+        li{list-style:none;}
+        a{text-decoration:none;}
+       
+        #music_box>ul{overflow:hidden;}
+         #music_box>ul>li{  float:left;
+                        display:block;
+                         height:20px;
+                         padding: 0 10px;
+                         margin : 0 15px;
+                         text-align:center;
+                         line-height:20px;
+                         }
+          #music_box>ul>input:hover{
+           background-color:yellow;
+           color:red;
+           cursor:pointer;
+        }                
+         #score{
+            font-size:30px;
+            color : orange;
+         }
+         #life{
+
+            font-size:30px;
+            color : red;
+         }
+         #description{
+            font-size:20px;
+            color : brown;
+         }
+
+         .button{
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:20px;
+  font-size:0.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:1300ms ease all;
+  outline:none;
+}
+.menubutton{
+  cursor:pointer;
+  transition:1300ms ease all;
+  outline:none;
+}
+
+.button:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+.button:before,.button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+.button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.button:hover:before,button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+#mute{
+   width:30px;
+   text-align:center;
+   padding:0;
+   font-size:15px;
+}
+#content{
+   display:none;
+}
+#menu{
+   background-color:black;
+   position:relative;
+   width:100%;
+   height:500px;
+   background-image:url('표지.JPG');
+   
+}
+#menutopic{
+   background-color:white;
+   position:absolute;
+   z-index:1;
+   left:100px;
+   top:20px;
+   font-family: 'Cute Font', cursive;
+   font-size:70px;
+}
+#menutopic:hover{
+   background-color:black;
+   color:white;
+
+   }
+#menustart{
+   background-color:white;
+   position:absolute;
+   z-index:1;
+   left:100px;
+   top:300px;
+   font-family: 'Cute Font', cursive;
+   font-size:40px;
+}
+#menustart:hover{
+   background-color:black;
+   color:white;
+   cursor:pointer;
+   }
+#menuhelp{
+   background-color:white;
+   position:absolute;
+   z-index:1;
+   left:100px;
+   top:400px;
+   font-family: 'Cute Font', cursive;
+   font-size:40px;
+}
+#menuhelp:hover{
+   background-color:black;
+   color:white;
+   cursor:pointer;
+   }
+.popup{
+   position:fixed;
+   top: 0;
+   left: 0;
+   background-color:white;
+   padding: 30px 20px;
+   z-index : 1;
+   width:500px;
+   height:400px;
+   border:1px solid black;
+}
+#help_note{
+   display:none;
+   margin:50px;
+   padding:50px;
+   
+   height:300px;
+   font-size:30px;
+   color:darkgray;
+
+}
+#backbutton{
+   background-color:white;
+   position:absolute;
+   z-index:1;
+   left:100px;
+   top:80px;
+   font-family: 'Cute Font', cursive;
+   font-size:40px;
+}
+#backbutton:hover{
+   background-color:black;
+   color:white;
+   cursor:pointer;
+   }
+ #purple{
+    color:purple;
+    font-family: 'Nanum Pen Script', cursive;
+ }
+ #red{
+    color:red;
+    font-family: 'Nanum Pen Script', cursive;
+ }
+  #blue{
+    color:blue;
+    font-family: 'Nanum Pen Script', cursive;
+ }
+ #black{
+    color:black;
+    font-family: 'Nanum Pen Script', cursive;
+ }
+ #text{
+     color: #ff4dff;
+     font-family: 'Nanum Pen Script', cursive;
+ }
+  #level1{
+   background-color:white;
+   position:absolute;
+   z-index:1;
+   left:250px;
+   top:300px;
+   font-family: 'Cute Font', cursive;
+   font-size:20px;
+}
+#level1:hover{
+   background-color:black;
+   color:white;
+   cursor:pointer;
+   }
+   #level2{
+   background-color:white;
+   position:absolute;
+   z-index:1;
+   left:300px;
+   top:300px;
+   font-family: 'Cute Font', cursive;
+   font-size:20px;
+}
+#level2:hover{
+   background-color:black;
+   color:white;
+   cursor:pointer;
+   }
+   #level3{
+   background-color:white;
+   position:absolute;
+   z-index:1;
+   left:350px;
+   top:300px;
+   font-family: 'Cute Font', cursive;
+   font-size:20px;
+}
+#level3:hover{
+   background-color:black;
+   color:white;
+   cursor:pointer;
+   }
+#fingersnap{
+    display:none;
+    position:absolute;
+    top:150px;
+    left:200px;
+
+    width:300px;
+    height:300px;
+ }
+ #story{
+     font-family: 'Cute Font', cursive;
+    font-size:20px;
+ }
+
+ #finish{
+  display:none;
+  z-index:3;
+  position:absolute;
+  top:150px;
+  left:200px;
+ }
+
+            
+
+    </style>
+</head>
+<body>
+<img class="finish" id="finish" src="완성.jpg">
+<input type="button" class="finish" id="finish" value="다시시작">
+<div id="menu">
+   <div  id="menutopic">계란 깨기</div>
+   
+   <div ><input type="button" class="menubutton" id="menustart" value="게임 시작"></div>
+    <div ><input type="button" class="menubutton" id="level1" value="레벨 1"></div>
+   <div ><input type="button" class="menubutton" id="level2" value="레벨 2"></div>
+   <div ><input type="button" class="menubutton" id="level3" value="레벨 3"></div>
+   <div >   <input type="button" class="menubutton" id="menuhelp" value="도움말"></div>
+</div>
+<img id="fingersnap" src="finger.GIF">
+
+<div id="content">
+   <div id="canvas">
+      <canvas id="myCanvas" width="650" height="500"></canvas>
+   </div>
+   <div id="show" >
+      <div id="show_box" >   
+        <div id="score">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Score:0</div>
+        <div id="life">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Life : ♥♥♥♥♥</div>
+        <div id="description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Key
+                    <br>▶m : change background
+                    <br>▶s : activate skill
+                    <br>▶p : pause
+        <div id="leftskill">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;남은 스킬 횟수: 3</div>
+                    
+        </div>   
+      </div>
+      <div id="music_box">♬Music List♪&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="button" id="mute" value="♬x"><br>
+            <ul>
+               <input type="button" class="button" id="firstsong"  value="First song">
+               <input type="button" class="button" id="secondsong"  value="Second song">
+            </ul><br>
+            <ul>
+               <input type="button" class="button" id="thirdsong"  value="Third song" >
+               <input type="button" class="button" id="fourthsong"  value="Fourth song" >
+            </ul>
+      </div>
+      <div id="story_box">
+         <div id="purple"> ● : 계란의 속도가 20% 증가합니다.</div>
+            <div id="blue"> ● : 바의 길이가 2배로 늘어납니다.</div>
+            <div id="red"> ● : 라이프 하나를 획득합니다.</div>
+            <div id="black"> ● : 바에 자력이 생깁니다.</div>
+            <div id="story">1단계 : 계란이 견고합니다. 계란후라이를 만들기위해 계란을 후라이펜으로 깨주세요.</div>
+      </div>
+   </div>
+</div>
+<div id="help_note">
+         <input type="button" class="menubutton" id="backbutton" value="뒤로가기"><br>
+         <div id="text">
+         <p>게임 설명:
+             <br>계란 후라이가 되기 위해 후라이팬으로 돌진하세요!
+            <br>난이도가 올라갈수록 바길이가 줄어들고 계란의 속도가 증가합니다!
+            <br><br><!-- 1-->
+            ◈아이템 설명◈</div>
+            <div id="purple"> ● : 계란의 속도가 2ㄴ0% 증가합니다.</div>
+            <div id="blue"> ● : 바의 길이가 2배로 늘어납니다.</div>
+            <div id="red"> ● : 라이프 하나를 획득합니다.</div>
+            <div id="black"> ● : 바에 자력이 생깁니다.</div>
+         </p>
+
+</div>
+
+<script>
+
+
+   function finish() {
+
+       document.getElementById("finish").style.display='block';
+       document.getElementById("content").style.display='none';
+
+    }
+
+      var menubt = document.getElementById("menustart");
+          var helpbt = document.getElementById("menuhelp");
+          var backbt = document.getElementById("backbutton");
+         
+
+         menubt.onclick = startclick;
+         helpbt.onclick = helpclick;
+         backbt.onclick = backclick;
+    function startclick(){
+       document.getElementById("menu").style.display='none';
+       document.getElementById("help_note").style.display='none';
+       document.getElementById("content").style.display='block';
+    }
+    function helpclick(){
+       document.getElementById("menu").style.display='none';
+       document.getElementById("content").style.display='none';
+       document.getElementById("help_note").style.display='block';
+    }
+      function backclick(){
+       document.getElementById("menu").style.display='block';
+       document.getElementById("content").style.display='none';
+       document.getElementById("help_note").style.display='none';
+    }
+
+    function fingerBrick(){
+       for(var i=0;i<brick_rows;i++)
+       {
+          for(var j=0;j<brick_cols;j++)
+          {
+             if(Math.random()*4<1)
+                bricks[i][j].status=0;
+          }
+       }
+
+    }
+
+    function fingersnap(){
+       drawfingersnap();
+       setTimeout('erasefingersnap()',1000);
+       fingerBrick();
+    }
+    function drawfingersnap(){
+       document.getElementById("fingersnap").style.display='block';
+       
+    }
+    function erasefingersnap(){
+       document.getElementById("fingersnap").style.display='none';
+       document.getElementById("content").style.display='block';
+    }
+
+    var stage=1;
+         
+
+
+
+    var audio1 = new Audio();
+    audio1.src = "song1.mp3";
+    var audio2 = new Audio();
+    audio2.src = "song2.mp3";
+    var audio3 = new Audio();
+    audio3.src = "song3.mp3";
+    var audio4 = new Audio();
+    audio4.src = "song4.mp3";
+
+    var picture1 = new Image();
+
+    var skill_left=3
+    var i=0;
+    var f=0;
+    var canvas = document.getElementById("myCanvas");
+    var context = canvas.getContext("2d");
+
+    var egg=new Image();
+    egg.src="egg.png";
+    var egg_radius = 12;
+    
+    var dx = 2;  //계란 속도
+    var dy = -2;
+
+    var bar_height = 10;  //바 속성
+    var bar_width = 100;
+    var bar_X = (canvas.width-bar_width)/2; 
+    var rightPressed = false;
+    var leftPressed = false;
+
+    var brick_cols = 15;  //벽돌 속성
+    var brick_rows = 12;
+    var brick_width = 35;
+    var brick_height = 17;
+    var brick_padding = 1;
+    var brick_top = 150;
+    var brick_left = 50;
+
+
+    var score = 0;
+    var lives = 4;
+
+    var bricks = [];//벽돌 개수 초기화
+    for(var i=0; i<brick_rows; i++) {  
+        bricks[i] = [];
+        for(var j=0; j<brick_cols; j++) {
+            bricks[i][j] = { x: 0, y: 0, status: 1 ,item_X:0,item_Y:0,item_status:1,item_type:4 ,brick_lives:3};
+            var ran=Math.random()*3;
+            if(ran<1)
+                bricks[i][j].brick_lives=1;
+            else if(ran<2)
+                bricks[i][j].brick_lives=2;  
+
+        }
+    }
+
+    
+
+     function drawmap3(){
+
+        for(var i=0; i<brick_rows; i++) {  
+        bricks[i] = [];
+        for(var j=0; j<brick_cols; j++) {
+            bricks[i][j] = { x: 0, y: 0, status: 1 ,item_X:0,item_Y:0,item_status:1,item_type:4 ,brick_lives:3};
+            var ran=Math.random()*3;
+            if(ran<1)
+                bricks[i][j].brick_lives=1;
+            else if(ran<2)
+                bricks[i][j].brick_lives=2;  
+
+        }
+    }
+       for(var i=0;i<brick_rows;i++)
+    {
+        bricks[i][3].status=0;
+        bricks[i][7].status=0;
+        bricks[i][10].status=0;
+    }
+    }
+    
+    function drawmap1(){
+         for(var i=0; i<brick_rows; i++) {  
+        bricks[i] = [];
+        for(var j=0; j<brick_cols; j++) {
+            bricks[i][j] = { x: 0, y: 0, status: 1 ,item_X:0,item_Y:0,item_status:1,item_type:4 ,brick_lives:3};
+            var ran=Math.random()*3;
+            if(ran<1)
+                bricks[i][j].brick_lives=1;
+            else if(ran<2)
+                bricks[i][j].brick_lives=2;  
+
+        }
+    }
+        for(var i=0;i<brick_rows;i++)
+    {
+       bricks[i][0].status=0;
+       bricks[i][14].status=0;
+    }
+    for(var i=0;i<4;i++)
+    {
+       bricks[i][1].status=0;
+       bricks[i][13].status=0;
+    }
+    for(var i=7;i<12;i++)
+    {
+       bricks[i][1].status=0;
+       bricks[i][13].status=0;
+    }
+     for(var i=0;i<3;i++)
+    {
+       bricks[i][2].status=0;
+       bricks[i][12].status=0;
+    }
+    for(var i=8;i<12;i++)
+    {
+       bricks[i][2].status=0;
+       bricks[i][12].status=0;
+    }
+     for(var i=0;i<2;i++)
+    {
+       bricks[i][3].status=0;
+       bricks[i][11].status=0;
+    }
+    for(var i=9;i<12;i++)
+    {
+       bricks[i][3].status=0;
+       bricks[i][11].status=0;
+    }
+     for(var i=0;i<2;i++)
+    {
+       bricks[i][4].status=0;
+       bricks[i][10].status=0;
+    }
+    for(var i=10;i<12;i++)
+    {
+       bricks[i][4].status=0;
+       bricks[i][10].status=0;
+    }
+    for(var i=0;i<3;i++)
+    {
+       bricks[i][5].status=0;
+       bricks[i][9].status=0;
+    }
+    for(var i=11;i<12;i++)
+    {
+       bricks[i][5].status=0;
+       bricks[i][9].status=0;
+    }
+      for(var i=0;i<4;i++)
+    {
+       bricks[i][6].status=0;
+       bricks[i][8].status=0;
+    }
+        for(var i=0;i<5;i++)
+    {
+       bricks[i][7].status=0;
+    
+    }
+    }
+   
+     function drawmap2(){
+        for(var i=0; i<brick_rows; i++) {  
+        bricks[i] = [];
+        for(var j=0; j<brick_cols; j++) {
+            bricks[i][j] = { x: 0, y: 0, status: 1 ,item_X:0,item_Y:0,item_status:1,item_type:4 ,brick_lives:3};
+            var ran=Math.random()*3;
+            if(ran<1)
+                bricks[i][j].brick_lives=1;
+            else if(ran<2)
+                bricks[i][j].brick_lives=2;  
+
+        }
+    }
+         for(var i=0;i<7;i++)
+    {
+       bricks[i][0].status=0;
+       bricks[i][14].status=0;
+    }
+    for(var i=0;i<6;i++)
+    {
+       bricks[i][1].status=0;
+       bricks[i][13].status=0;
+    }
+    
+     for(var i=0;i<4;i++)
+    {
+       bricks[i][2].status=0;
+       bricks[i][12].status=0;
+    }
+      for(var i=10;i<12;i++)
+    {
+       bricks[i][2].status=0;
+       bricks[i][12].status=0;
+    }
+   
+     for(var i=0;i<2;i++)
+    {
+       bricks[i][3].status=0;
+       bricks[i][11].status=0;
+    }
+     for(var i=8;i<12;i++)
+    {
+       bricks[i][3].status=0;
+       bricks[i][11].status=0;
+    }
+    
+     for(var i=0;i<1;i++)
+    {
+       bricks[i][4].status=0;
+       bricks[i][10].status=0;
+    }
+    for(var i=6;i<12;i++)
+    {
+       bricks[i][4].status=0;
+       bricks[i][10].status=0;
+    }
+    for(var i=4;i<12;i++)
+    {
+       bricks[i][5].status=0;
+       bricks[i][9].status=0;
+    }
+   
+      for(var i=3;i<12;i++)
+    {
+       bricks[i][6].status=0;
+       bricks[i][8].status=0;
+    }
+        for(var i=3;i<12;i++)
+    {
+       bricks[i][7].status=0;
+    
+    }
+    }
+    
+
+    var frypan=new Image();
+    frypan.src="frypan.jpg";
+    var im=1;
+
+
+    var frypan_X=canvas.width/2; //후라이팬 속성
+    var frypan_Y=30;
+    var frypan_width=55;
+    var frypan_height=55;
+    var frypan_dx=-1;
+    var frypan_lives=5;
+
+    
+    var item_radius=5;
+    var probability=3;
+    var item_dy=2;
+    var action;
+
+    var pPressed = false;
+    var mPressed = false;
+    var sPressed = false;
+
+    var x = bar_X+bar_width/2; //계란 시작위치
+    var y = canvas.height-bar_height-egg_radius; 
+
+    document.addEventListener("mousemove", mouseMoveHandler, false);
+
+    function mouseMoveHandler(e) {
+        var relativeX = e.clientX - canvas.offsetLeft;
+        if(relativeX > 0 && relativeX < canvas.width) {
+            bar_X = relativeX - bar_width/2;
+        }   
+    }
+    var click=0;
+    function click_on(){
+        click++;
+        if(click<2)
+        x=bar_X+bar_width/2;
+    }
+    function drawEgg() {
+
+
+
+        
+
+        
+
+        if(click==0)
+        {
+        context.beginPath();
+        context.arc(bar_X+bar_width/2, canvas.height-bar_height-egg_radius, egg_radius, 0, Math.PI*2);
+        context.fillStyle = "#F5DA81";
+        context.fill();
+        context.closePath();
+        context.drawImage(egg,bar_X+bar_width/2-egg_radius, canvas.height-bar_height-egg_radius-egg_radius,25,25);
+
+
+        if(stage==2||stage==3)
+        {
+            var egg_line=egg_radius/2;
+        var egg_line_X=bar_X+bar_width/2;
+        var egg_line_Y=canvas.height-bar_height-egg_radius;
+        
+        context.beginPath();
+        context.moveTo(egg_line_X-egg_radius,egg_line_Y);
+        context.lineTo(egg_line_X-egg_line,egg_line_Y+egg_line);
+        context.lineTo(egg_line_X+egg_line,egg_line_Y-egg_line);
+        context.lineTo(egg_line_X+egg_radius,egg_line_Y);
+        context.strokeStyle="black";
+        context.stroke();
+        context.closePath();
+    }
+
+        
+
+    }
+
+        if(click>0)
+        {
+        context.beginPath();
+        context.arc(x, y, egg_radius, 0, Math.PI*2);
+        context.fillStyle = "#F5DA81";
+        context.fill();
+        context.closePath();
+        context.drawImage(egg,x-egg_radius,y-egg_radius,25,25);
+
+        if(stage==2||stage==3)
+        {
+            var egg_line=egg_radius/2;
+        var egg_line_X=x;
+        var egg_line_Y=y;
+        
+        context.beginPath();
+        context.moveTo(egg_line_X-egg_radius,egg_line_Y);
+        context.lineTo(egg_line_X-egg_line,egg_line_Y+egg_line);
+        context.lineTo(egg_line_X+egg_line,egg_line_Y-egg_line);
+        context.lineTo(egg_line_X+egg_radius,egg_line_Y);
+        context.strokeStyle="black";
+        context.stroke();
+        context.closePath();
+    }
+        
+    }
+        
+        
+    }
+
+    var bar_color="#F6CEF5";
+    function drawbar() {
+        context.beginPath();
+        context.rect(bar_X, canvas.height-bar_height, bar_width, bar_height);
+        
+        context.fillStyle = bar_color;
+        context.fill();
+        context.closePath();
+    }
+    function drawBricks() {
+
+        for(var c=0; c<brick_rows; c++) {
+            for(var r=0; r<brick_cols; r++) {
+                if(bricks[c][r].status == 1) {
+                    var brickX = (r*(brick_width+brick_padding))+brick_left;
+                    var brickY = (c*(brick_height+brick_padding))+brick_top;
+                    bricks[c][r].x = brickX;
+                    bricks[c][r].y = brickY;
+
+                    context.beginPath();
+                    context.rect(brickX, brickY, brick_width, brick_height);
+                    if(bricks[c][r].brick_lives==1)
+                        context.fillStyle = "#E6E6E6";
+                    if(bricks[c][r].brick_lives==2)
+                        context.fillStyle = "#A4A4A4";
+                    if(bricks[c][r].brick_lives==3)
+                        context.fillStyle = "#6E6E6E";
+
+                    context.globalAlpha=0.8;
+
+                    context.fill();
+                    context.closePath();
+                }
+            }
+        }
+    }
+
+   function drawScore() {
+
+        document.getElementById("score").innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Score: "+score;
+
+    }
+    function drawLives() {
+        
+        if (lives==5)
+        document.getElementById("life").innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Life: ♥ ♥ ♥ ♥ ♥ " 
+          else if (lives==4)
+        document.getElementById("life").innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Life: ♥ ♥ ♥ ♥ " 
+       else if (lives==3)
+        document.getElementById("life").innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Life: ♥ ♥ ♥ " 
+        else if(lives==2)
+      document.getElementById("life").innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Life: ♥ ♥ " 
+        else
+        document.getElementById("life").innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Life: ♥ "          
+    }
+    function story(){
+       if (stage==1)
+        document.getElementById("story").innerHTML="1단계 : 계란이 견고합니다. 계란후라이를 만들기위해 계란을 후라이펜으로 깨주세요." 
+          else if (stage==2)
+        document.getElementById("story").innerHTML="2단계 : 계란에 금이가기 시작했습니다. 계란을 깨기위해 조금만더 노력해주세요." 
+       else if (stage==3)
+        document.getElementById("story").innerHTML="3단계 : 계란이 깨지기 직전입니다. 조금만더 노력해주세요." 
+       
+    }
+
+    function drawFrypan(){
+        context.beginPath();
+        context.rect(frypan_X,frypan_Y,frypan_width,frypan_height);
+
+        if(frypan_lives==3)
+            context.fillStyle="#013ADF";
+        if(frypan_lives==2)
+            context.fillStyle="#5882FA";
+        if(frypan_lives==1)
+            context.fillStyle="#CED8F6";
+        context.fill();
+        context.closePath();
+        context.drawImage(frypan,frypan_X,frypan_Y,frypan_width,frypan_height);
+    }
+
+    var HP_padding=10;
+    var HP_height=7;
+
+    function drawHP(){
+        var HP_gap
+        if(stage==1)
+            HP_gap=frypan_width/5;
+        if(stage==2)
+            HP_gap=frypan_width/7;
+        if(stage==3)
+            HP_gap=frypan_width/10;
+
+        
+        context.beginPath();
+        context.rect(frypan_X,frypan_Y-HP_padding,HP_gap*frypan_lives,HP_height);
+        context.fillStyle="#FFBF00";
+        context.fill();
+        context.closePath();
+        if(frypan_lives==0) {
+            frypan_lives=-1;
+                            
+                            if(stage==1)
+                            {
+                                alert("계란이 조금 깨졌습니다!");
+                            stage=2;
+                        }
+                        else if(stage==2)
+                        {
+                            alert("계란이 깨지기 직전입니다!");
+                            stage=3;
+
+                        }
+                        else if(stage==3)
+                        {
+                           
+                            alert("축하드려요! 계란 후라이가 맛나게 익었습니다.");  
+
+                            finish();            
+                            
+                            
+
+                        }
+                        
+
+                     }
+    }
+
+    function drawItem(){
+        for(var i=0; i<brick_rows; i++) {
+            for(var j=0; j<brick_cols; j++) {
+                var b = bricks[i][j];
+                if(b.item_status==0)
+                {
+                context.beginPath();
+                context.arc(b.item_X,b.item_Y,item_radius,0, Math.PI*2);
+                if(b.item_type==1)
+                    context.fillStyle="purple";
+                if(b.item_type==2)
+                    context.fillStyle="blue";
+                if(b.item_type==3)
+                    context.fillStyle="red";
+                if(b.item_type==4)
+                    context.fillStyle="black";
+
+                context.fill();
+                context.closePath();
+                b.item_Y+=item_dy;
+                //document.getElementById("score").innerHTML=Math.random()*probability;
+            }
+            }
+        }
+        
+        
+    }
+    function firstclick(){
+       audio1.play();
+       audio2.pause();
+       audio3.pause();
+       audio4.pause();
+       }
+    function secondclick(){
+       audio2.play();
+       audio1.pause();
+       audio3.pause();
+       audio4.pause();
+       }
+    function thirdclick(){
+       audio3.play();
+       audio2.pause();
+       audio1.pause();
+       audio4.pause();
+       }
+    function fourthclick(){
+       audio4.play();
+       audio2.pause();
+       audio3.pause();
+       audio1.pause();
+       }
+       function muteclick(){
+          audio1.pause();
+          audio2.pause();
+          audio3.pause();
+          audio4.pause();
+       }
+   
+    function collisionDetection() {
+        for(var i=0; i<brick_rows; i++) {
+            for(var j=0; j<brick_cols; j++) {
+                var b = bricks[i][j];
+                if(b.status == 1) {
+                    if( b.x < x && x < b.x+brick_width && b.y < y && y < b.y+brick_height) {
+                        var minX=Math.min(b.x+brick_width-x,x-b.x);
+                        var minY=Math.min(b.y+brick_height-y,y-b.y);
+                        if(minX>minY)
+                            dy = -dy;
+                        else
+                            dx=-dx;
+                        
+
+                        b.brick_lives--;
+                        if(b.brick_lives==0)
+                        {
+                            bricks[i][j].item_X=x;
+                            bricks[i][j].item_Y=y;
+                            b.status = 0;
+                            score=score+100;
+                            if(Math.random()*probability<1){
+                            bricks[i][j].item_status=0;
+                            if(Math.random()*4<1)
+                            {
+                                bricks[i][j].item_type=1;
+                            }
+                            else if(Math.random()*4<2)
+                            {
+                                bricks[i][j].item_type=2;
+                            }
+                            else if(Math.random()*4<3)
+                            {
+                                bricks[i][j].item_type=3;
+                            }
+                            else if(Math.random()*4<4)
+                            {
+                                bricks[i][j].item_type=4;
+                            }
+                        }
+
+                        }
+                        
+                        
+                    }
+                    
+                }
+            }
+        }
+    }
+    var velo=1;
+    var tof=1;
+    function getItem(){
+        
+         for(var i=0; i<brick_rows; i++) {
+            for(var j=0; j<brick_cols; j++) {
+                var b=bricks[i][j];
+                if(b.item_Y<canvas.height&&b.item_Y>canvas.height-bar_height&&bar_X<b.item_X&&b.item_X<bar_X+bar_width)
+                {
+                    
+                    if(b.item_type==1&&tof<=1)
+                    {
+                        dx=dx*6/5;
+                        dy=dy*6/5;
+                        bar_color="purple";
+                        tof++;
+                    }
+                    if(b.item_type==2)
+                    {
+                        if(bar_width<101)
+                        {
+                        bar_width=bar_width*3/2;
+                        
+                    }
+                    bar_color="blue";
+                    }    
+                        
+                    if(b.item_type==3)
+                    {
+                        if(lives<4)
+                        lives++;
+                        bar_color="red";
+
+                    }
+                    if(b.item_type==4)
+                    {
+                        
+                        bar_color="black";
+                    }
+                
+
+
+                }
+            }
+        }
+    }
+    function init_stage1(){
+        x = bar_X+bar_width/2; //계란 시작위치
+        y = canvas.height-bar_height-egg_radius; 
+        click=0;
+        score=0;
+        lives=4;
+        frypan_lives=5;
+        drawmap1();
+        bar_width=100;
+        bar_color="#F6CEF5";
+        dx=2;
+        dy=-2;
+    }
+    function init_stage2(){
+        x = bar_X+bar_width/2; //계란 시작위치
+        y = canvas.height-bar_height-egg_radius; 
+        click=0;
+        score=0;
+        lives=4;
+        frypan_lives=7;
+        drawmap2();
+        bar_width=75;
+        bar_color="#F6CEF5";
+        dx=2.3;
+        dy=-2.3;
+    }
+    function init_stage3(){
+        x = bar_X+bar_width/2; //계란 시작위치
+        y = canvas.height-bar_height-egg_radius; 
+        click=0;
+        score=0;
+        lives=4;
+        frypan_lives=10;
+        drawmap3();
+        bar_width=50;
+        bar_color="#F6CEF5";
+        dx=2.6;
+        dy=-2.6;
+    }
+    var stage_1=true;
+    var stage_2=true;
+    var stage_3=true;
+
+    function draw() {
+        if(stage==1&&stage_1)
+        {
+            init_stage1();
+            stage_1=false;
+        }
+        if(stage==2&&stage_2)
+        {
+            init_stage2();
+            stage_2=false;
+        }
+        if(stage==3&&stage_3)
+        {
+            init_stage3();
+            stage_3=false;
+        }
+        
+
+       // audio1.play();
+      
+
+
+       
+        function level1click(){
+          stage=1;
+          document.getElementById("level1").style.color='white';
+          document.getElementById("level1").style.backgroundColor='black';
+          document.getElementById("level2").style.color='black';
+          document.getElementById("level2").style.backgroundColor='white';
+          document.getElementById("level3").style.color='black';
+          document.getElementById("level3").style.backgroundColor='white';
+       }
+       function level2click(){
+          stage=2;
+          document.getElementById("level2").style.color='white';
+          document.getElementById("level2").style.backgroundColor='black';
+          document.getElementById("level1").style.color='black';
+          document.getElementById("level1").style.backgroundColor='white';
+          document.getElementById("level3").style.color='black';
+          document.getElementById("level3").style.backgroundColor='white';
+       }
+       function level3click(){
+          stage=3;
+          document.getElementById("level3").style.color='white';
+          document.getElementById("level3").style.backgroundColor='black';
+          document.getElementById("level1").style.color='black';
+          document.getElementById("level1").style.backgroundColor='white';
+          document.getElementById("level2").style.color='black';
+          document.getElementById("level2").style.backgroundColor='white';
+       }
+
+            var level1 = document.getElementById("level1");
+            var level2 = document.getElementById("level2");
+            var level3 = document.getElementById("level3");
+
+
+            level1.onclick = level1click;
+            level2.onclick = level2click;
+            level3.onclick = level3click;
+
+            var finishbt = document.getElementById("finish");
+            finishbt.onclick=restart;
+
+            function restart(){
+              document.location.reload();
+            }
+
+          var firstbt = document.getElementById("firstsong");
+          var secondbt = document.getElementById("secondsong");
+          var thirdbt = document.getElementById("thirdsong");
+          var fourthbt = document.getElementById("fourthsong");
+          var mutebt = document.getElementById("mute");
+
+        firstbt.onclick = firstclick;
+
+         secondbt.onclick = secondclick;
+
+         thirdbt.onclick = thirdclick;
+
+         fourthbt.onclick = fourthclick;
+
+         mutebt.onclick = muteclick;
+
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        
+        drawBricks();
+        drawFrypan();
+        drawHP();
+        
+        drawbar();
+        
+        drawEgg();
+        drawScore();
+        drawLives();
+        story();
+        collisionDetection();
+        drawItem();
+        getItem();
+        
+
+        
+        canvas.onclick=click_on;
+
+
+   
+        
+        
+    document.addEventListener("keydown", keyDownHandler, false);
+      document.addEventListener("keyup", keyUpHandler, false);
+      function keyDownHandler(e) {
+          if(e.key == "p") {
+                 pPressed = true;
+             }
+          else if(e.key == "m") {
+              mPressed = true;
+          }
+          else if(e.key == "s"){
+             sPressed = true;
+          }
+      }
+      function keyUpHandler(e) {
+            if(e.key == "p" ) {
+                mPressed = false;
+                sPressed = false;
+             }
+           else if(e.key == "m" ) {
+                  pPressed = false;
+                  sPressed = false;
+             }
+          else if(e.key == "s"){
+
+                pPressed = false;
+                mPressed = false;
+
+             }
+         }
+            if(pPressed) {
+                alert("일시정지")
+                pPressed = false;
+            }
+
+            else if(mPressed) {
+
+                  im++;
+                  var image = document.getElementById('myCanvas');
+                  //image.style.backgroundImage="url(tor.JPG)"
+                  if(im%2==0)
+                  {
+                     image.style.backgroundImage="url(fire2.JPG)";
+                  }else{
+                     image.style.backgroundImage="url(fire1.JPG)";
+                  }
+
+
+                   mPressed = false;
+            }
+            else if(sPressed){
+                if(skill_left>0)
+                   fingersnap();
+                skill_left--;
+                if (skill_left==2)
+                    document.getElementById("leftskill").innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;남은 스킬 횟수: 2 " 
+               else if (skill_left==1)
+                    document.getElementById("leftskill").innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;남은 스킬 횟수: 1 " 
+              else if (skill_left==0)
+                   document.getElementById("leftskill").innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;남은 스킬 횟수: 0 " 
+
+               sPressed = false;
+            }
+
+        
+        
+
+        frypan_X+=frypan_dx;
+
+        
+
+        if(frypan_X<0)
+            frypan_dx=-frypan_dx;
+        else if(frypan_X+frypan_width>canvas.width)
+            frypan_dx=-frypan_dx;
+
+
+
+        
+        if(frypan_X<x&&x<frypan_X+frypan_width&&frypan_Y<y&&y<frypan_Y+frypan_height)
+        {
+            frypan_lives--;
+            var minX=Math.min(Math.abs(frypan_X+frypan_width-x),Math.abs(x-frypan_X));
+            var minY=Math.min(Math.abs(frypan_Y+frypan_height-y),Math.abs(y-frypan_Y));
+            if(minX<minY)
+                dx=-dx;
+            else
+                dy=-dy;
+
+            f++
+            
+        }
+
+
+
+
+        if(x + dx > canvas.width-egg_radius || x + dx < egg_radius) {
+            dx = -dx;
+        }
+        if(y + dy < egg_radius) {
+            dy = -dy;
+        }
+        else if(y + dy + egg_radius > canvas.height-egg_radius) {
+            if(x > bar_X && x < bar_X + bar_width) {
+                dy = -dy;
+                if(bar_color=="black")
+                    click=0;
+            }
+            else {
+                lives--;
+                click=0;
+                if(lives==0) {
+                    alert("계란이 바닥에 깨져버렸습니다. ㅠㅠ");
+                    
+                }
+                else {
+
+                    x = canvas.width/2;
+                    y = canvas.height-30;
+                    bar_X = (canvas.width-bar_width)/2;
+                }
+            }
+        }
+        if(rightPressed && bar_X < canvas.width-bar_width) {
+            bar_X += 7;
+        }
+        else if(leftPressed && bar_X > 0) {
+            bar_X -= 7;
+        }
+        if(click>0){
+            for(var i=0;i<velo;i++)
+            {
+        x += dx;
+        y += dy;
+    }
+    }
+        requestAnimationFrame(draw);
+    }
+    draw();
+</script>
+<footer>
+   <p>2019 WebProgramming Assignment BreakBrick</p>
+   <p>By Lee Ki Hyun , Jung Jae Woo</p>
+</footer>
+</body>
+</html>
